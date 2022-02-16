@@ -57,6 +57,7 @@ public class NoteDetailsFragment extends Fragment {
 
                     getParentFragmentManager()
                             .popBackStack();
+
 //                            .beginTransaction()
 //                            .remove(fragment)
 //                            .commit();
@@ -70,7 +71,6 @@ public class NoteDetailsFragment extends Fragment {
         if (arguments != null && arguments.containsKey(ARG_NOTE)) {
             Note notes = arguments.getParcelable(ARG_NOTE);
 
-
             updateNote(notes);
         }
 
@@ -83,3 +83,6 @@ public class NoteDetailsFragment extends Fragment {
     }
 
 }
+
+
+

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding">20dp</dimen>
-    <dimen name="margin">32dp</dimen>
-    <dimen name="coat_of_arms">30dp</dimen>
+    <dimen name="margin">20dp</dimen>
+    <dimen name="coat_of_arms_list_dim">40dp</dimen>
 </resources>

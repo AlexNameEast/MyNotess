@@ -19,18 +19,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        getSupportFragmentManager().setFragmentResultListener(NotesListFragment.NOTE_SELECTED, this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                Note note = result.getParcelable(NotesListFragment.SELECTED_NOTE_BUNDLE);
+        getSupportFragmentManager()
+                .setFragmentResultListener(NotesListFragment.NOTE_SELECTED, this, new FragmentResultListener() {
+                    @Override
+                    public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                        Note note = result.getParcelable(NotesListFragment.SELECTED_NOTE_BUNDLE);
 
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .add(R.id.container, NoteDetailsFragment.newInstance(note), NoteDetailsFragment.TAG)
-                        //.replace(R.id.container, NoteDetailsFragment.newInstance(note))
-                        .addToBackStack("")
-                        .commit();
-            }
-        });
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .add(R.id.fragment_container_list, NoteDetailsFragment.newInstance(note), NoteDetailsFragment.TAG)
+                                //.replace(R.id.container_list, NoteDetailsFragment.newInstance(note))
+                                .addToBackStack("")
+                                .commit();
+                    }
+                });
     }
 }
