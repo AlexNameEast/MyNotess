@@ -15,6 +15,8 @@ import com.example.mynotess.ui.list.NotesListFragment;
 
 public class NoteDetailsFragment extends Fragment {
 
+    public static final String TAG = "NoteDetailsFragment";
+
     private static final String ARG_NOTE = "ARG_NOTE";
     private TextView titleNote;
     private TextView noteDescription;
@@ -37,6 +39,26 @@ public class NoteDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        view.findViewById(R.id.button_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getParentFragmentManager().popBackStack();
+
+
+//                Fragment fragment = getParentFragmentManager().findFragmentByTag(TAG);
+//
+//                if (fragment != null) {
+//                    getParentFragmentManager()
+//                            .beginTransaction()
+//                            .remove(fragment)
+//                            .commit();
+//                }
+            }
+        });
+
+
         Bundle arguments = getArguments();
 
         getParentFragmentManager().setFragmentResultListener(NotesListFragment.NOTE_SELECTED, getViewLifecycleOwner(), new FragmentResultListener() {
@@ -57,7 +79,6 @@ public class NoteDetailsFragment extends Fragment {
 
             updateNote(notes);
         }
-
 
 
         // MaterialDatePicker date = view.findViewById(R.id.data);

@@ -3,11 +3,16 @@ package com.example.mynotess.domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.DrawableRes;
+
 import com.google.android.material.datepicker.MaterialDatePicker;
 
 public class Note implements Parcelable {
 
     private final String id;
+
+    @DrawableRes
+    private int image;
 
     private String title;
 
@@ -15,8 +20,9 @@ public class Note implements Parcelable {
 
     private MaterialDatePicker materialDatePicker;
 
-    public Note(String id, String title, String description) {
+    public Note(String id, int image, String title, String description) {
         this.id = id;
+        this.image = image;
         this.title = title;
         this.description = description;
         this.materialDatePicker = MaterialDatePicker
@@ -28,8 +34,10 @@ public class Note implements Parcelable {
 
     protected Note(Parcel in) {
         id = in.readString();
+        image = in.readInt();
         title = in.readString();
         description = in.readString();
+
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -65,9 +73,14 @@ public class Note implements Parcelable {
         return 0;
     }
 
+    public int getImage() {
+        return image;
+    }
+
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(id);
+        parcel.writeInt(image);
         parcel.writeString(title);
         parcel.writeString(description);
     }
