@@ -2,6 +2,7 @@ package com.example.mynotess.ui.details;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,9 @@ import com.example.mynotess.domain.Note;
 import com.example.mynotess.ui.list.NotesListFragment;
 
 public class NoteDetailsFragment extends Fragment {
+
+
+    public static final String TAG = "TAG";
 
     private static final String ARG_NOTE = "ARG_NOTE";
     private TextView titleNote;
@@ -39,17 +43,29 @@ public class NoteDetailsFragment extends Fragment {
 
         Bundle arguments = getArguments();
 
-        getParentFragmentManager().setFragmentResultListener(NotesListFragment.NOTE_SELECTED, getViewLifecycleOwner(), new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                Note notes = result.getParcelable(NotesListFragment.SELECTED_NOTE_BUNDLE);
-
-                updateNote(notes);
-            }
-        });
 
         titleNote = view.findViewById(R.id.title_note);
         noteDescription = view.findViewById(R.id.note_description);
+        view.findViewById(R.id.remove).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Fragment fragment = getParentFragmentManager().findFragmentByTag(TAG);
+
+
+                if (fragment != null) {
+
+                    getParentFragmentManager()
+                            .popBackStack();
+//                            .beginTransaction()
+//                            .remove(fragment)
+//                            .commit();
+
+                }
+
+
+            }
+        });
 
         if (arguments != null && arguments.containsKey(ARG_NOTE)) {
             Note notes = arguments.getParcelable(ARG_NOTE);
@@ -57,13 +73,6 @@ public class NoteDetailsFragment extends Fragment {
 
             updateNote(notes);
         }
-
-
-
-        // MaterialDatePicker date = view.findViewById(R.id.data);
-
-
-        //date = notes.getMaterialDatePicker();
 
 
     }

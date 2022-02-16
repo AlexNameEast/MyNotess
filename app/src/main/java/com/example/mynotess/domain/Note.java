@@ -15,7 +15,9 @@ public class Note implements Parcelable {
 
     private MaterialDatePicker materialDatePicker;
 
-    public Note(String id, String title, String description) {
+    private int img;
+
+    public Note(String id, String title, String description, int img) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -24,12 +26,14 @@ public class Note implements Parcelable {
                 .datePicker()
                 .setTitleText("Select date")
                 .build();
+        this.img = img;
     }
 
     protected Note(Parcel in) {
         id = in.readString();
         title = in.readString();
         description = in.readString();
+        img = in.readInt();
     }
 
     public static final Creator<Note> CREATOR = new Creator<Note>() {
@@ -56,6 +60,8 @@ public class Note implements Parcelable {
         return description;
     }
 
+    public  int getImg(){return img;}
+
     public MaterialDatePicker getMaterialDatePicker() {
         return materialDatePicker;
     }
@@ -70,5 +76,6 @@ public class Note implements Parcelable {
         parcel.writeString(id);
         parcel.writeString(title);
         parcel.writeString(description);
+        parcel.writeInt(img);
     }
 }

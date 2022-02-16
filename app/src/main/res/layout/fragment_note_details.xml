@@ -31,6 +31,14 @@
             app:layout_constraintTop_toBottomOf="@+id/title_note"
             tools:text="@string/app_name" />
 
+        <Button
+            android:id="@+id/remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/note_description"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <TextView
             android:id="@+id/data"
             android:layout_width="wrap_content"
