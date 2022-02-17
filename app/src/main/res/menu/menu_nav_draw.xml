@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group_notes"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/action_notes"
+            android:title="@string/notes" />
+
+        <item
+            android:id="@+id/action_settings_notes"
+            android:title="@string/settings_notes" />
+
+    </group>
+
+    <group
+        android:id="@+id/group_stuff"
+        android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/empty_fragment"
+            android:title="@string/empty_fragment" />
+        <item
+            android:id="@+id/about_app"
+            android:title="@string/about_app" />
+
+
+    </group>
+
+</menu>
