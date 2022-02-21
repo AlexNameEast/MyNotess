@@ -60,7 +60,9 @@ public class Note implements Parcelable {
         return description;
     }
 
-    public  int getImg(){return img;}
+    public int getImg() {
+        return img;
+    }
 
     public MaterialDatePicker getMaterialDatePicker() {
         return materialDatePicker;

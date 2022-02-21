@@ -10,9 +10,9 @@
         android:id="@+id/coat_of_arms"
         android:layout_width="@dimen/coat_of_arms_list_dim"
         android:layout_height="@dimen/coat_of_arms_list_dim"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:src="@drawable/ic_baseline_notes_24" />
 
     <TextView
@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/coat_of_arms"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="@string/app_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

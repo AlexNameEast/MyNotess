@@ -1,21 +1,29 @@
 package com.example.mynotess.ui.list;
 
+import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.mynotess.R;
 import com.example.mynotess.domain.Note;
 import com.example.mynotess.domain.NotesRepositoryImp;
+import com.example.mynotess.ui.MainActivity;
+import com.example.mynotess.ui.NavDrawable;
 import com.example.mynotess.ui.details.NoteDetailsFragment;
 
 import java.util.List;
@@ -45,6 +53,32 @@ public class NotesListFragment extends Fragment implements NotesListView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+
+        if (requireActivity() instanceof NavDrawable) {
+            ((NavDrawable) requireActivity()).setAppBar(toolbar);
+        }
+
+
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                if (item.getItemId() == R.id.action_add) {
+                    Toast.makeText(requireContext(), "Add", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                if (item.getItemId() == R.id.action_clear_all) {
+                    Toast.makeText(requireContext(), "Clear All", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+
+                return false;
+            }
+        });
+
         containerList = view.findViewById(R.id.container_list);
         presenter.requestNotes();
     }
@@ -61,11 +95,11 @@ public class NotesListFragment extends Fragment implements NotesListView {
                 public void onClick(View view) {
 
 
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable(SELECTED_NOTE_BUNDLE, note);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable(SELECTED_NOTE_BUNDLE, note);
 
-                        getParentFragmentManager()
-                                .setFragmentResult(NOTE_SELECTED, bundle);
+                    getParentFragmentManager()
+                            .setFragmentResult(NOTE_SELECTED, bundle);
 
                 }
             });
@@ -80,4 +114,5 @@ public class NotesListFragment extends Fragment implements NotesListView {
         }
 
     }
+
 }

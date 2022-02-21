@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">MyNotes</string>
     <string name="back">Back</string>
+    <string name="action_add">Add</string>
+    <string name="action_clear_all">Clear All</string>
+    <string name="action_share">Share</string>
+    <string name="notes_list">Notes</string>
+    <string name="details">Note Details</string>
+    <string name="notes">Notes</string>
+    <string name="another_notes">Another Notes Block</string>
+    <string name="action_1">Action 1</string>
+    <string name="empty_fragment">Empty Fragment</string>
+    <string name="action_3">Action 3</string>
+    <string name="action_4">Action 4</string>
+    <string name="open_drawer">Open drawer</string>
+    <string name="close_drawer">Clouse drawer</string>
+    <string name="action_search">Search</string>
+    <string name="action_copy_to_clipboard">Copy to Clipboard</string>
+    <string name="settings_notes">Settings</string>
+    <string name="about_app">About Application</string>
 </resources>
