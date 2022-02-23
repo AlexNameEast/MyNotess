@@ -2,6 +2,7 @@ package com.example.mynotess.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -9,8 +10,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.mynotess.R;
@@ -27,6 +31,64 @@ public class MainActivity extends AppCompatActivity implements NavDrawable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+//        findViewById(R.id.exit).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                new AlertDialog.Builder(MainActivity.this)
+//                        .setTitle("Title")
+//                        .setMessage("Message")
+//                        .setIcon(R.drawable.ic_launcher_background)
+//                        .setPositiveButton("positive", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Toast.makeText(MainActivity.this, "positive", Toast.LENGTH_LONG).show();
+//
+//                            }
+//                        })
+//                        .setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Toast.makeText(MainActivity.this, "Neutral", Toast.LENGTH_LONG).show();
+//
+//                            }
+//                        })
+//                        .setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Toast.makeText(MainActivity.this, "Negative", Toast.LENGTH_LONG).show();
+//
+//                            }
+//                        })
+//                        .setCancelable(false)
+//                        .show();
+//            }
+//        });
+//        findViewById(R.id.exit).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                new AlertDialog.Builder(MainActivity.this)
+//                        .setTitle("AlertDialog!")
+//                        .setMessage("exit?")
+//                        .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                Toast.makeText(MainActivity.this, "no", Toast.LENGTH_SHORT).show();
+//                                //MainActivity.super.onResume();
+//                            }
+//                        })
+//                        .setPositiveButton("да", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                Toast.makeText(MainActivity.this, "Yes", Toast.LENGTH_SHORT).show();
+//                                //MainActivity.super.onStop();
+//                            }
+//                        })
+//                        .show();
+//            }
+//        });
 
 
         drawerLayout = findViewById(R.id.drawer);
@@ -85,6 +147,8 @@ public class MainActivity extends AppCompatActivity implements NavDrawable {
                                 .commit();
                     }
                 });
+
+
     }
 
     @Override
@@ -101,5 +165,44 @@ public class MainActivity extends AppCompatActivity implements NavDrawable {
         drawerLayout.addDrawerListener(toggle);
 
         toggle.syncState();
+
+        findViewById(R.id.exit022).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Вы действительно хотите выйти?")
+                        .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                //Toast.makeText(MainActivity.this, "no", Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .setPositiveButton("да", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(MainActivity.this, "Выход", Toast.LENGTH_SHORT).show();
+                                finish();
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Toast.makeText(this, "pause", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        //Toast.makeText(this, "destroy", Toast.LENGTH_SHORT).show();
+        super.onDestroy();
     }
 }

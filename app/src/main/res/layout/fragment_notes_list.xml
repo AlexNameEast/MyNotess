@@ -27,9 +27,21 @@
             android:id="@+id/container_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
 
     </androidx.core.widget.NestedScrollView>
+
+
+    <Button
+        android:id="@+id/exit022"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Exit" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
